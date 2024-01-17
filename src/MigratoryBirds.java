@@ -28,6 +28,7 @@ public class MigratoryBirds {
                 }
             }
             hashMap.put(arr.get(i), count);
+
         }
         // Using Stream to find entries with the max value
         int maxValue = hashMap.values().stream()
