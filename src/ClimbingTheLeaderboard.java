@@ -1,47 +1,40 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class ClimbingTheLeaderboard {
     public static void main(String[] args) {
         List<Integer> a = climbingLeaderboard(Arrays.asList(100,90,90,80,75,60), Arrays.asList(50,65,77,90,102));
         System.out.println(a);
-        List<Integer> b = new ArrayList<>();
-        b.add(1);
-        b.add(2);
-        b.add(3);
-        b.add(4);
-        b.add(4,5);
-        System.out.println(b);
 
 
     }
     public static List<Integer> climbingLeaderboard(List<Integer> ranked, List<Integer> player) {
         // Write your code here
+        ArrayList<Integer> result = new ArrayList<>();
+        HashMap<Integer,Integer> ranking = new HashMap<>();
         int place = 1;
-        int index = 0;
 
-        List<Integer> result = new ArrayList<>();
-
-        for(int i = 0; i < player.size(); i++){
-
-            for(int j = 0; j < ranked.size()-1; j++){
-                if(player.get(i) < ranked.get(i)){
-                    if(ranked.get(i) == ranked.get(i+1)){
-                        index++;
-                        continue;
-                    }else{
-                        index++;
-                    }
-                    place++;
-                }
+        for(int i = 0; i < ranked.size(); i++){
+            if(!ranking.containsKey(ranked.get(i))){
+                ranking.put(ranked.get(i), place++);
             }
-            ranked.add(index, player.get(i));
-            result.add(place);
-
         }
 
-return null;
+        int init = ranked.size()-1;
+        for(int score : player){
+            for(int i = init; i >= 0; i--){
+                if(score >= ranked.get(i)){
+                    place = ranking.get(ranked.get(i));
+                    init = i-1;
+                }
+                else break;
+            }
+            result.add(place);
+        }
 
+
+        return result;
     }
 }
