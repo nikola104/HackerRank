@@ -20,8 +20,8 @@ public class CutTheSticks {
 
     public static List<Integer> cutTheSticks(List<Integer> arr) {
         // Write your code here
-        List<Integer> a = new ArrayList<>();
-        a.add(arr.size());
+        List<Integer> ar = new ArrayList<>();
+        ar.add(arr.size());
         while(!arr.isEmpty()){
             int smallestNumber = arr.get(0);
             for(int i = 0; i < arr.size(); i++){
@@ -29,8 +29,6 @@ public class CutTheSticks {
                     smallestNumber = arr.get(i);
                 }
             }
-            System.out.println(smallestNumber);
-            System.out.println(arr.toString());
             for(int i =0 ; i < arr.size(); i++){
                 arr.set(i, arr.get(i) - smallestNumber);
                 if(arr.get(i) == 0){
@@ -39,11 +37,11 @@ public class CutTheSticks {
                 }
 
             }
-            a.add(arr.size());
+            ar.add(arr.size());
         }
 
-        a.remove(a.size()-1);
-        return a;
+        ar.remove(ar.size()-1);
+        return ar;
     }
 
 }
