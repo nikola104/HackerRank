@@ -1,1 +1,1 @@
-This is my HackerRank- https://www.hackerrank.com/profile/vulchinovn
+HackerRank- https://www.hackerrank.com/profile/vulchinovn
